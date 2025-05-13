@@ -1,0 +1,49 @@
+# Archivos generados por Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# VS / VSCode
+.vscode/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+
+# Rider
+.idea/
+*.sln.iml
+
+# Archivos de Unity relacionados con la cache y configuraciones locales
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+
+# Collab
+.collab/
+
+# Configuración de paquetes y dependencias
+Packages/packages-lock.json
+
+# Archivos de build en WebGL
+Build/
+
+# Configuración del sistema operativo
+*.swp
+
+# Plastic SCM
+.plastic/
+ignore.conf
