@@ -37,16 +37,17 @@ public class PlayerMovement : MonoBehaviour
         else if (movement.x > 0)
             transform.localScale = new Vector3(1, 1, 1);
 
-        // Salto (Space)
+        // Salto (W o flecha hacia arriba)
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         animator.SetBool("isJumping", !isGrounded);
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetButtonDown("Jump")) 
+            && isGrounded && !isCrouching)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
         }
 
-        // Agacharse (S)
-        if (Input.GetKey(KeyCode.S) && isGrounded)
+        // Agacharse (S o flecha hacia abajo)
+        if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && isGrounded)
         {
             isCrouching = true;
         }
@@ -78,12 +79,6 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J) && !isCrouching && isGrounded)
         {
             animator.SetTrigger("punch");
-        }
-
-        // Recibir dano (por ejemplo, tecla H solo para probar)
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            animator.SetTrigger("hit");
         }
     }
 
