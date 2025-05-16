@@ -31,6 +31,8 @@ Thumbs.db
 *.pdb
 *.mdb
 *.opendb
+*.dwlt
+
 
 # Collab
 .collab/
