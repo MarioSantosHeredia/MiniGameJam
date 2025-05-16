@@ -11,7 +11,7 @@ public class BossController : MonoBehaviour
     public GameObject rightWall;
 
     private bool isRetreating = true;
-    private bool battleStarted = false;
+    public bool battleStarted = false;
 
     float originalY;
     float hoverSpeed = 2f;

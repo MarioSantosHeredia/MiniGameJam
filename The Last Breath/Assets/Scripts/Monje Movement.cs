@@ -109,11 +109,19 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemigo"))
         {
-            // Lógica para manejar la colisión con el enemigo
-
-            Debug.Log("Colisión con enemigo detectada");
-            // Por ejemplo, puedes reproducir un sonido o aplicar daño al jugador
+            // Activa la animacion de dano
+            if (animator != null)
+            {
+                animator.SetTrigger("hit");
+            }
+            // Reproducir un sonido o aplicar dano al jugador
             soundManager.SeleccionarSonido(4, 0.5f);
+
+            // Retroceso en la direccion a la que se dirige el enemigo
+            Vector2 knockbackDirection = (transform.position.x < collision.transform.position.x) ? Vector2.left : Vector2.right;
+            float knockbackForce = 5f; // puedes ajustar la intensidad
+
+            rb.linearVelocity = new Vector2(knockbackDirection.x * knockbackForce, 2f);
         }      
     }
 }
