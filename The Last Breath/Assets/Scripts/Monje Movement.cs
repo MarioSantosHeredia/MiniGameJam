@@ -22,6 +22,10 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool isInvulnerable = false;
 
+    public GameObject punchHitbox;
+    public GameObject kickHitbox;
+    public GameObject crouchKickHitbox;
+    public GameObject flyingKickHitbox;
 
     void Start()
     {
@@ -167,4 +171,20 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer.enabled = true; // asegurate de dejarlo visible
         isInvulnerable = false;
     }
+
+    // Punch
+    public void EnablePunchHitbox() => punchHitbox.SetActive(true);
+    public void DisablePunchHitbox() => punchHitbox.SetActive(false);
+
+    // Kick
+    public void EnableKickHitbox() => kickHitbox.SetActive(true);
+    public void DisableKickHitbox() => kickHitbox.SetActive(false);
+
+    // Crouch Kick
+    public void EnableCrouchKickHitbox() => crouchKickHitbox.SetActive(true);
+    public void DisableCrouchKickHitbox() => crouchKickHitbox.SetActive(false);
+
+    // Flying Kick
+    public void EnableFlyingKickHitbox() => flyingKickHitbox.SetActive(true);
+    public void DisableFlyingKickHitbox() => flyingKickHitbox.SetActive(false);
 }
