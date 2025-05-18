@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 8385034970700424097}
   - component: {fileID: 3174078212341315709}
   - component: {fileID: 3903160490912693254}
+  - component: {fileID: 4781050940919344068}
   m_Layer: 0
   m_Name: Enemy1
   m_TagString: Enemigo
@@ -281,3 +282,17 @@ MonoBehaviour:
   leftLimit: {fileID: 0}
   rightLimit: {fileID: 0}
   movingRight: 1
+--- !u!114 &4781050940919344068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8885581862501676914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca757aeac260988499f57d239322c553, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipo: 1
+  damageAmount: 5

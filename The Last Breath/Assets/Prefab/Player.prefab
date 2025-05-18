@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4341997290047363281}
   - component: {fileID: 2888139932509896718}
   - component: {fileID: 4634437342046662974}
+  - component: {fileID: 8938992002823795136}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -206,6 +207,26 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &8938992002823795136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4013739436444177399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc19fe23f5e929439e2c5ad919607ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  regenRate: 1
+  regenDelay: 3
+  HealthBar: {fileID: 0}
+  HealthText: {fileID: 0}
+  deathScreenUI: {fileID: 0}
+  restartDelay: 3
 --- !u!1 &6861783261197682588
 GameObject:
   m_ObjectHideFlags: 0

@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemigo"))
+        if (collision.gameObject.CompareTag("Enemigo") || collision.gameObject.CompareTag("Pinchos"))
         {
             // Activa la animacion de dano
             if (animator != null)
@@ -123,10 +123,18 @@ public class PlayerMovement : MonoBehaviour
 
             rb.linearVelocity = new Vector2(knockbackDirection.x * knockbackForce, 2f);
 
-            EnemyType enemigo = collision.gameObject.GetComponent<EnemyType>();
+            if (collision.gameObject.CompareTag("Pinchos"))
+            {
+                // Si el jugador colisiona con pinchos, aplica daño
+                GetComponent<PlayerHealth>().TakeDamage(100f);
+            }
+            else
+            {
+                EnemyType enemigo = collision.gameObject.GetComponent<EnemyType>();
 
-            // Dano segun el tipo de enemigo
-            GetComponent<PlayerHealth>().TakeDamage(enemigo.damageAmount);
-        }      
+                // Dano segun el tipo de enemigo
+                GetComponent<PlayerHealth>().TakeDamage(enemigo.damageAmount);
+            }
+        }    
     }
 }
