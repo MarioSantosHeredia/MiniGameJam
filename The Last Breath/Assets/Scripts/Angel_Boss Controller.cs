@@ -64,6 +64,8 @@ public class BossController : MonoBehaviour
         leftWall.SetActive(true);
         rightWall.SetActive(true);
 
+        GetComponent<HealthBoss>().ActivateHealthBar();
+
         CameraFollow camFollow = Camera.main.GetComponent<CameraFollow>();
         camFollow.lockCamera = true;
 
