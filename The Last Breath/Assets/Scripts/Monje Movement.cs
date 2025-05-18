@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,11 +17,18 @@ public class PlayerMovement : MonoBehaviour
 
     private EfectosSonido soundManager;
 
+    private float damageCooldown = 1f; // tiempo entre danos
+    private float nextDamageTime = 0f;
+    private SpriteRenderer spriteRenderer;
+    private bool isInvulnerable = false;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         soundManager = FindFirstObjectByType<EfectosSonido>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -107,8 +115,14 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if(Time.time < nextDamageTime) return;
+
         if (collision.gameObject.CompareTag("Enemigo") || collision.gameObject.CompareTag("Pinchos"))
         {
+            // Inicia el cooldown
+            nextDamageTime = Time.time + damageCooldown;
+            StartCoroutine(FlashDamageEffect(damageCooldown, 0.1f));
+
             // Activa la animacion de dano
             if (animator != null)
             {
@@ -123,10 +137,10 @@ public class PlayerMovement : MonoBehaviour
 
             rb.linearVelocity = new Vector2(knockbackDirection.x * knockbackForce, 2f);
 
+            // Aplica el dano correspondiente
             if (collision.gameObject.CompareTag("Pinchos"))
             {
-                // Si el jugador colisiona con pinchos, aplica daño
-                GetComponent<PlayerHealth>().TakeDamage(100f);
+                GetComponent<PlayerHealth>().TakeDamage(100f); // muerte instantanea
             }
             else
             {
@@ -136,5 +150,21 @@ public class PlayerMovement : MonoBehaviour
                 GetComponent<PlayerHealth>().TakeDamage(enemigo.damageAmount);
             }
         }    
+    }
+
+    IEnumerator FlashDamageEffect(float duration, float flashInterval)
+    {
+        isInvulnerable = true;
+        float time = 0f;
+
+        while (time < duration)
+        {
+            spriteRenderer.enabled = !spriteRenderer.enabled;
+            yield return new WaitForSeconds(flashInterval);
+            time += flashInterval;
+        }
+
+        spriteRenderer.enabled = true; // asegurate de dejarlo visible
+        isInvulnerable = false;
     }
 }
