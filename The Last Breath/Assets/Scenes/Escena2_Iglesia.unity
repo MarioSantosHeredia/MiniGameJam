@@ -2026,7 +2026,7 @@ MonoBehaviour:
   player: {fileID: 819392764}
   startOffsetX: 1.5
   retreatSpeed: 2
-  retreatDistance: 3.8
+  retreatDistance: 3.5
   battleTriggerX: 12.1
   leftWall: {fileID: 2136692966}
   rightWall: {fileID: 1971356484}
