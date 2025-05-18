@@ -11,6 +11,7 @@ public class HealthBoss : MonoBehaviour
     public GameObject healthBarUI; // El panel completo de la barra
     public Image healthFill;
     public TextMeshProUGUI healthText;
+    public GameObject rightWall;
     
     private SpriteRenderer spriteRenderer;
     private Animator animator;
@@ -58,19 +59,35 @@ public class HealthBoss : MonoBehaviour
 
     void Die()
     {
+        // Para el movimiento
         var movementScript = GetComponent<BossAngelBehavior>();
         if (movementScript != null)
             movementScript.enabled = false;
 
+        // Desactiva el collider
         var col = GetComponent<Collider2D>();
         if (col != null)
             col.enabled = false;
 
-
+        // Animacion de muerte
         if (animator != null)
             animator.SetTrigger("die"); // Trigger en el Animator
+        
+        // Desactivar barra de vida
+        if (healthBarUI != null)
+            healthBarUI.SetActive(false);
 
-        Destroy(gameObject, 2f); // se elimina despues de animacion
+        // Volver a activar seguimiento de camara
+        CameraFollow cam = Camera.main.GetComponent<CameraFollow>();
+        if (cam != null)
+            cam.lockCamera = false;
+
+        // Desactivar limite derecho
+        if (rightWall != null)
+            rightWall.SetActive(false);
+        
+        // Se elimina el objeto
+        Destroy(gameObject, 2f); 
     }
 
     IEnumerator DamageFlash()
