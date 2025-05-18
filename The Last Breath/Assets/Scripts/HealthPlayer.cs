@@ -15,6 +15,9 @@ public class PlayerHealth : MonoBehaviour
 
     private float lastDamageTime;
 
+    public GameObject deathScreenUI; // Asigna el panel del mensaje
+    public float restartDelay = 3f;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -42,8 +45,11 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            if(deathScreenUI != null)
+                deathScreenUI.SetActive(true);
+
             gameObject.SetActive(false);
-            Invoke(nameof(RestartLevel), 2f);
+            Invoke(nameof(RestartLevel), restartDelay);
         }
     }
 
