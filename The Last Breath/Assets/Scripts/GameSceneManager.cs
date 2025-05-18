@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class SceneManager : MonoBehaviour
+public class GameSceneManager : MonoBehaviour
 {
     private SceneManager gameManager;
     //public static SceneManager instance = null;

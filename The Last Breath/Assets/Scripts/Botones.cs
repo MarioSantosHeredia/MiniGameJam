@@ -4,14 +4,14 @@ using UnityEngine.UI;
 public class Botones : MonoBehaviour
 {
     //1. Declaración de variables
-    private SceneManager gameManager;
+    private GameSceneManager gameManager;
     //Referencias a los botones (public para poder asignarlas en la Inspector window)
     public Button botonJugar, botonPersonajes, botonCreditos, botonSalir;
     // Start is called before the first frame update
     void Start()
     {
         //2. Busco y asocio mi script de GameManager
-        gameManager = FindFirstObjectByType<SceneManager>();
+        gameManager = FindFirstObjectByType<GameSceneManager>();
         
         //3. Acciones de cada botón
         

@@ -122,6 +122,11 @@ public class PlayerMovement : MonoBehaviour
             float knockbackForce = 5f; // puedes ajustar la intensidad
 
             rb.linearVelocity = new Vector2(knockbackDirection.x * knockbackForce, 2f);
+
+            EnemyType enemigo = collision.gameObject.GetComponent<EnemyType>();
+
+            // Dano segun el tipo de enemigo
+            GetComponent<PlayerHealth>().TakeDamage(enemigo.damageAmount);
         }      
     }
 }
