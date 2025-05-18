@@ -8,6 +8,7 @@ TagManager:
   - Enemigo
   - PlayerAttack
   - Pinchos
+  - Limite
   layers:
   - Default
   - TransparentFX
