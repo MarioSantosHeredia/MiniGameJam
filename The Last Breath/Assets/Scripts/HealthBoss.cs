@@ -87,7 +87,7 @@ public class HealthBoss : MonoBehaviour
             rightWall.SetActive(false);
         
         // Se elimina el objeto
-        Destroy(gameObject, 2f); 
+        Destroy(gameObject, 1f); 
     }
 
     IEnumerator DamageFlash()
