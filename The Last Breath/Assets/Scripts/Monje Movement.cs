@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -27,12 +28,15 @@ public class PlayerMovement : MonoBehaviour
     public GameObject crouchKickHitbox;
     public GameObject flyingKickHitbox;
 
+    private string currentSceneName;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         soundManager = FindFirstObjectByType<EfectosSonido>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        currentSceneName = SceneManager.GetActiveScene().name;
     }
 
     void Update()
@@ -119,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(Time.time < nextDamageTime || isInvulnerable) return;
+        if (Time.time < nextDamageTime || isInvulnerable) return;
 
         if (collision.gameObject.CompareTag("Enemigo") || collision.gameObject.CompareTag("Pinchos"))
         {
@@ -153,7 +157,16 @@ public class PlayerMovement : MonoBehaviour
                 // Dano segun el tipo de enemigo
                 GetComponent<PlayerHealth>().TakeDamage(enemigo.damageAmount);
             }
-        }    
+        }
+
+        // Cambia de escena al entrar en el trigger del limite
+        if (collision.gameObject.CompareTag("Limite") && currentSceneName == "Escena1_Cementerio")
+        {
+            SceneManager.LoadScene("Escena2_Iglesia");
+        }else if (collision.gameObject.CompareTag("Limite") && currentSceneName == "Escena2_Iglesia")
+        {
+            SceneManager.LoadScene("Escena_Final");
+        }
     }
 
     IEnumerator FlashDamageEffect(float duration, float flashInterval)
