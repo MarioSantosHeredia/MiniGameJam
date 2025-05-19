@@ -17,14 +17,18 @@ public class PauseManager : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        if (pauseMenuUI != null)
+            pauseMenuUI.SetActive(false);
+
         Time.timeScale = 1f; // reanudar el tiempo
         isPaused = false;
     }
 
     void Pause()
     {
-        pauseMenuUI.SetActive(true);
+        if (pauseMenuUI != null)
+            pauseMenuUI.SetActive(true);
+            
         Time.timeScale = 0f; // congelar el tiempo
         isPaused = true;
     }
