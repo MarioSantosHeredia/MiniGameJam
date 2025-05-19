@@ -72,7 +72,6 @@ public class PlayerMovement : MonoBehaviour
         if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && isGrounded)
         {
             isCrouching = true;
-            soundManager.SeleccionarSonido(2, 0.25f);
         }
         else
         {
