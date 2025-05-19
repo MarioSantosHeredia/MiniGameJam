@@ -4178,11 +4178,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3547083632096391316, guid: c4ec35ade02045b4183e4de0621f31ca, type: 3}
       propertyPath: m_Points.Array.data[0].x
-      value: -0.15987349
+      value: -0.19345117
       objectReference: {fileID: 0}
     - target: {fileID: 3547083632096391316, guid: c4ec35ade02045b4183e4de0621f31ca, type: 3}
       propertyPath: m_Points.Array.data[0].y
-      value: 0.02589798
+      value: 0.007710099
       objectReference: {fileID: 0}
     - target: {fileID: 3547083632096391316, guid: c4ec35ade02045b4183e4de0621f31ca, type: 3}
       propertyPath: m_Points.Array.data[1].x
