@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
+        
         // Salto (W o flecha hacia arriba)
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         animator.SetBool("isJumping", !isGrounded);
